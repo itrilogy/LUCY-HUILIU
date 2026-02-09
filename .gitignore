@@ -1,0 +1,20 @@
+# Python scripts
+ai_tagger.py
+bootstrap_metadata.py
+generate_metadata.py
+
+# Logs
+*.log
+tagger.log
+
+# Python environment
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
