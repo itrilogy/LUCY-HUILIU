@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VectorStream 矢量流 - 本地素材管理系统</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonts handled locally in style.css -->
+</head>
+
+<body>
+    <header class="glass">
+        <div class="header-content">
+            <div class="logo" id="versionTrigger">
+                <img src="assets/logo.svg" alt="VectorStream Logo" class="brand-logo">
+                <h1>VectorStream <span>矢量流</span></h1>
+            </div>
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索 2,396 个矢量素材...">
+                    <span id="resultCount">2396</span>
+                </div>
+
+                <div class="pagination-control">
+                    <label for="rowsSelect">每页行数</label>
+                    <select id="rowsSelect">
+                        <option value="5" selected>5行</option>
+                        <option value="10">10行</option>
+                        <option value="20">20行</option>
+                        <option value="40">40行</option>
+                        <option value="all">无分页</option>
+                    </select>
+                </div>
+
+                <div class="grid-control">
+                    <label for="gridRange">网格密度</label>
+                    <input type="range" id="gridRange" min="2" max="10" value="5">
+                </div>
+
+                <div class="color-picker-container">
+                    <input type="color" id="colorPicker" value="#028000" title="选择配色">
+                </div>
+            </div>
+        </div>
+
+        <nav class="category-nav">
+            <div class="category-wrapper" id="categoryList">
+                <button class="cat-item active" data-cat="all">全部素材</button>
+                <!-- 分类将由 JS 动态注入 -->
+            </div>
+            <button id="backToTop" class="icon-btn" title="回到顶部">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 15l-6-6-6 6" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main id="gallery">
+        <!-- 素材项将在此注入 -->
+    </main>
+
+    <div id="paginationNav" class="pagination-nav">
+        <!-- 分页控件将在此注入 -->
+    </div>
+
+    <!-- 下载弹窗 -->
+    <div id="downloadModal" class="modal hidden">
+        <div class="modal-content download-config">
+            <button class="close-btn" id="closeDownload">&times;</button>
+            <div class="preview-area">
+                <div id="modalSvgPreview"></div>
+            </div>
+            <div class="options-area">
+                <h2 id="modalTitle">素材名称</h2>
+                <div id="modalTags" class="modal-tags">
+                    <!-- 标签将由 JS 动态注入 -->
+                </div>
+                <p class="modal-desc">选择您需要的格式下载</p>
+                <div class="download-btns">
+                    <button id="downloadSvg" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        下载 SVG 矢量图
+                    </button>
+                    <button id="downloadPng" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        下载 PNG 位图
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 版本信息弹窗 -->
+    <div id="versionModal" class="modal hidden">
+        <div class="modal-content version-info">
+            <button class="close-btn" id="closeVersion">&times;</button>
+            <div class="version-header">
+                <img src="assets/logo.svg" alt="Logo">
+                <h2>VectorStream 矢量流</h2>
+                <p class="tagline">基于 AI 驱动的本地素材管理系统</p>
+            </div>
+
+            <div class="version-details">
+                <div class="detail-item">
+                    <span>当前版本</span>
+                    <strong>v1.3.3 (Full Offline)</strong>
+                </div>
+                <div class="detail-item">
+                    <span>作者 / Author</span>
+                    <strong>Kwangwa Hung</strong>
+                </div>
+                <div class="detail-item">
+                    <span>组织 / Org</span>
+                    <strong>鹿溪联合创新实验室</strong>
+                </div>
+                <div class="detail-item">
+                    <span>开源协议</span>
+                    <strong>MIT License</strong>
+                </div>
+            </div>
+
+            <div class="about-section"
+                style="text-align: left; background: #e6f4ea; padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(2, 128, 0, 0.1);">
+                <p style="font-size: 0.8rem; color: #0b4f10; margin-bottom: 0.5rem; font-weight: 600;">⚖️ 版权与素材声明</p>
+                <p style="font-size: 0.75rem; color: #1a5c20; line-height: 1.6;">
+                    本系统内素材来源于以下免费商用版权项目：<br>
+                    • <strong>VectorCraftr</strong><br>
+                    • <strong>unDraw.co</strong><br>
+                    遵循其开放许可协议，支持个人及商业用途。
+                </p>
+            </div>
+
+            <div class="about-section" style="text-align: left; padding: 0 1rem; margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 0.5rem; color: var(--text-main); font-size: 0.85rem;">✨ 核心特性</h4>
+                <ul style="font-size: 0.8rem; color: var(--text-light); line-height: 1.6; list-style: inside;">
+                    <li>🤖 AI 语义检索 (Qwen3-VL 32B)</li>
+                    <li>🎨 实时色彩定制</li>
+                    <li>⚡️ 动态网格与分页</li>
+                </ul>
+            </div>
+
+            <footer class="version-footer">
+                &copy; 2026 Kwangwa Hung & Luxi Lab. All rights reserved.
+            </footer>
+        </div>
+    </div>
+
+    <div id="toast" class="hidden"></div>
+    <canvas id="conversionCanvas" class="hidden"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

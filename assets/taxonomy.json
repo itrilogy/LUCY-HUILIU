@@ -1,0 +1,378 @@
+[
+    {
+        "id": "business",
+        "en": "Business",
+        "zh": "商务办公",
+        "keywords": [
+            {
+                "en": "office",
+                "zh": "办公室"
+            },
+            {
+                "en": "work",
+                "zh": "工作"
+            },
+            {
+                "en": "business",
+                "zh": "商业"
+            },
+            {
+                "en": "meeting",
+                "zh": "会议"
+            },
+            {
+                "en": "colleague",
+                "zh": "同事"
+            },
+            {
+                "en": "presentation",
+                "zh": "演示"
+            },
+            {
+                "en": "marketing",
+                "zh": "营销"
+            },
+            {
+                "en": "corporate",
+                "zh": "企业"
+            },
+            {
+                "en": "briefing",
+                "zh": "简报"
+            },
+            {
+                "en": "startup",
+                "zh": "创业"
+            }
+        ]
+    },
+    {
+        "id": "tech",
+        "en": "Technology",
+        "zh": "科技数字化",
+        "keywords": [
+            {
+                "en": "tech",
+                "zh": "科技"
+            },
+            {
+                "en": "coding",
+                "zh": "编程"
+            },
+            {
+                "en": "data",
+                "zh": "数据"
+            },
+            {
+                "en": "cloud",
+                "zh": "云端"
+            },
+            {
+                "en": "software",
+                "zh": "软件"
+            },
+            {
+                "en": "ai",
+                "zh": "人工智能"
+            },
+            {
+                "en": "hardware",
+                "zh": "硬件"
+            },
+            {
+                "en": "digital",
+                "zh": "数字化"
+            },
+            {
+                "en": "app",
+                "zh": "应用"
+            },
+            {
+                "en": "server",
+                "zh": "服务器"
+            },
+            {
+                "en": "programmer",
+                "zh": "程序员"
+            }
+        ]
+    },
+    {
+        "id": "people",
+        "en": "People",
+        "zh": "人物生活",
+        "keywords": [
+            {
+                "en": "woman",
+                "zh": "女性"
+            },
+            {
+                "en": "man",
+                "zh": "男性"
+            },
+            {
+                "en": "character",
+                "zh": "角色"
+            },
+            {
+                "en": "people",
+                "zh": "人们"
+            },
+            {
+                "en": "person",
+                "zh": "个人"
+            },
+            {
+                "en": "child",
+                "zh": "孩子"
+            },
+            {
+                "en": "family",
+                "zh": "家庭"
+            },
+            {
+                "en": "social",
+                "zh": "社交"
+            },
+            {
+                "en": "activity",
+                "zh": "活动"
+            },
+            {
+                "en": "user",
+                "zh": "用户"
+            }
+        ]
+    },
+    {
+        "id": "health",
+        "en": "Healthy",
+        "zh": "医疗运动",
+        "keywords": [
+            {
+                "en": "medical",
+                "zh": "医疗"
+            },
+            {
+                "en": "doctor",
+                "zh": "医生"
+            },
+            {
+                "en": "health",
+                "zh": "健康"
+            },
+            {
+                "en": "hospital",
+                "zh": "医院"
+            },
+            {
+                "en": "fitness",
+                "zh": "健身"
+            },
+            {
+                "en": "sport",
+                "zh": "运动"
+            },
+            {
+                "en": "yoga",
+                "zh": "瑜伽"
+            },
+            {
+                "en": "wellness",
+                "zh": "身心健康"
+            },
+            {
+                "en": "nurse",
+                "zh": "护士"
+            },
+            {
+                "en": "medicine",
+                "zh": "药物"
+            }
+        ]
+    },
+    {
+        "id": "daily",
+        "en": "Daily",
+        "zh": "日常琐事",
+        "keywords": [
+            {
+                "en": "home",
+                "zh": "居家"
+            },
+            {
+                "en": "shopping",
+                "zh": "购物"
+            },
+            {
+                "en": "food",
+                "zh": "食物"
+            },
+            {
+                "en": "pet",
+                "zh": "宠物"
+            },
+            {
+                "en": "travel",
+                "zh": "旅游"
+            },
+            {
+                "en": "cooking",
+                "zh": "烹饪"
+            },
+            {
+                "en": "grocery",
+                "zh": "杂货"
+            },
+            {
+                "en": "house",
+                "zh": "房屋"
+            },
+            {
+                "en": "cleaning",
+                "zh": "清洁"
+            },
+            {
+                "en": "delivery",
+                "zh": "快递"
+            }
+        ]
+    },
+    {
+        "id": "edu",
+        "en": "Education",
+        "zh": "教育学习",
+        "keywords": [
+            {
+                "en": "school",
+                "zh": "学校"
+            },
+            {
+                "en": "learning",
+                "zh": "学习"
+            },
+            {
+                "en": "study",
+                "zh": "研究"
+            },
+            {
+                "en": "book",
+                "zh": "图书"
+            },
+            {
+                "en": "university",
+                "zh": "大学"
+            },
+            {
+                "en": "teaching",
+                "zh": "教育"
+            },
+            {
+                "en": "creative",
+                "zh": "创意"
+            },
+            {
+                "en": "science",
+                "zh": "科学"
+            },
+            {
+                "en": "research",
+                "zh": "科研"
+            }
+        ]
+    },
+    {
+        "id": "ui",
+        "en": "Interface",
+        "zh": "界面布局",
+        "keywords": [
+            {
+                "en": "404",
+                "zh": "未找到"
+            },
+            {
+                "en": "empty",
+                "zh": "空白页"
+            },
+            {
+                "en": "error",
+                "zh": "错误"
+            },
+            {
+                "en": "search",
+                "zh": "搜索"
+            },
+            {
+                "en": "ui",
+                "zh": "界面"
+            },
+            {
+                "en": "web",
+                "zh": "网页"
+            },
+            {
+                "en": "layout",
+                "zh": "布局"
+            },
+            {
+                "en": "login",
+                "zh": "登录"
+            },
+            {
+                "en": "maintenance",
+                "zh": "维护"
+            },
+            {
+                "en": "mobile",
+                "zh": "移动端"
+            }
+        ]
+    },
+    {
+        "id": "abstract",
+        "en": "Abstract",
+        "zh": "抽象概念",
+        "keywords": [
+            {
+                "en": "idea",
+                "zh": "灵感"
+            },
+            {
+                "en": "innovation",
+                "zh": "创新"
+            },
+            {
+                "en": "vision",
+                "zh": "愿景"
+            },
+            {
+                "en": "strategy",
+                "zh": "策略"
+            },
+            {
+                "en": "growth",
+                "zh": "增长"
+            },
+            {
+                "en": "logic",
+                "zh": "逻辑"
+            },
+            {
+                "en": "process",
+                "zh": "过程"
+            },
+            {
+                "en": "success",
+                "zh": "成功"
+            },
+            {
+                "en": "future",
+                "zh": "未来"
+            },
+            {
+                "en": "trends",
+                "zh": "趋势"
+            }
+        ]
+    }
+]
