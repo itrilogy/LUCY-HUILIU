@@ -20,6 +20,7 @@ const rowsSelect = document.getElementById('rowsSelect');
 const paginationNav = document.getElementById('paginationNav');
 const backToTopBtn = document.getElementById('backToTop');
 const versionModal = document.getElementById('versionModal');
+const clearSearchBtn = document.getElementById('clearSearch');
 const toast = document.getElementById('toast');
 const canvas = document.getElementById('conversionCanvas');
 
@@ -64,6 +65,9 @@ function beautifyName(filename) {
 // 核心过滤逻辑：支持 分类 + 语义搜索 + 多关键词 + 隐式分类匹配
 function filterAndRender() {
     const rawTerm = searchInput.value.toLowerCase().trim();
+    // 切换清理按钮显示
+    clearSearchBtn.classList.toggle('hidden', rawTerm.length === 0);
+
     const keywords = rawTerm.split(/\s+/).filter(k => k.length > 0); // Split by space
     currentPage = 1; // Search/Filter resets pagination
 
@@ -405,6 +409,12 @@ async function downloadAsPng() {
 // 事件监听
 function setupEventListeners() {
     searchInput.addEventListener('input', filterAndRender);
+
+    clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        filterAndRender();
+        searchInput.focus();
+    });
 
     colorPicker.addEventListener('input', (e) => {
         currentColor = e.target.value;

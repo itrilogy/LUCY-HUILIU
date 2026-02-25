@@ -1,4 +1,4 @@
-# VectorStream 矢量流 - 本地素材管理系统 (v1.3.3)
+# VectorStream 矢量流 - 本地素材管理系统 (v1.4.0)
 
 VectorStream 是一个现代化的、基于 AI 驱动的 SVG 矢量插画本地管理与检索系统。它专为解决“素材多、管理难、查找慢”的痛点而设计，通过集成大模型 (LLM) 的语义理解能力，让您可以像使用 Google 图片搜索一样精准查找本地素材。本版本已实现 **全离线运行**。
 
@@ -63,10 +63,13 @@ VectorStream 是一个现代化的、基于 AI 驱动的 SVG 矢量插画本地�
 ### 2. 安装依赖
 ```bash
 # 进入项目目录
-cd undraw-local-manager
+cd VectorStream
 
 # 安装 Python 依赖 (用于 AI 标注脚本)
 pip install requests
+
+# (可选) 从自定义目录导入并重命名图标素材
+python3 process_icons.py --source /path/to/your/icons
 ```
 
 ### 3. 运行服务
@@ -87,14 +90,14 @@ python3 ai_tagger.py
 ## 📂 目录结构
 
 ```
-undraw-local-manager/
+VectorStream/
 ├── assets/
 │   ├── illustrations/       # 2,396 个 SVG 源文件
 │   ├── metadata.json        # 核心索引库 (由 AI 生成)
 │   ├── taxonomy.json        # 分类体系定义
 │   └── ai_cache.json        # AI 结果缓存
-├── ai_tagger.py             # AI 标注主程序 (Python)
-├── bootstrap_metadata.py    # 元数据初始化脚本
+├── ai_tagger.py             # 核心处理引擎：AI 标注、增量更新与并发管理
+├── process_icons.py         # 图标预处理：重命名与唯一性校验
 ├── index.html               # 主入口
 ├── script.js                # 前端交互逻辑
 ├── style.css                # 样式表
@@ -103,9 +106,11 @@ undraw-local-manager/
 
 ## 📜 版本历史
 
-- **v1.3.2 (Current)**:
-  - 🧠 **智能搜索增强**：实现多关键词组合搜索与隐式分类映射。
-  - 🎨 **色彩同步修复**：解决弹窗预览与下载文件颜色不同步的问题。
+- **v1.4.0 (Current)**:
+  - 🚀 **大规模资产整合**：成功整合了包括 IconPark, Lucide 等在内的 1.5 万个新图标资产，总数突破 1.7 万。
+  - 🏎️ **并发标注引擎**：重构 `ai_tagger.py` 以支持多线程并发，标注效率提升 5-10 倍。
+  - 📑 **增量任务清单**：引入 `incremental_task.json` 清单机制，支持精准的断点续传。
+- **v1.3.2**:
 - **v1.3.1**:
   - 💄 **个性化定制**：新增网格密度滑块、行数选择器、回到顶部按钮。
   - 🖼 **双格式下载**：新增 PNG 导出功能。
@@ -117,7 +122,9 @@ undraw-local-manager/
 
 ## 📄 版权说明
 - **System License**: MIT License
-- **Assets Source**: 本系统内素材来源于开源项目 **VectorCraftr** 及 **unDraw.co**，均遵循其原有的免费商用协议。
+- **Assets Source**: 本系统内素材来源于以下开源项目，均遵循其原有的免费商用协议：
+  - **插画类**: [unDraw.co](https://undraw.co), [Lukasz Adam](https://lukaszadam.com), **VectorCraftr**。
+  - **图标类**: [IconPark](https://iconpark.oceanengine.com), [Lucide](https://lucide.dev), [Tabler Icons](https://tabler-icons.io), [Feather](https://feathericons.com), [Heroicons](https://heroicons.com), [Iconoir](https://iconoir.com)。
 - **Author**: Kwangwa Hung / 鹿溪联合创新实验室
 
 ---

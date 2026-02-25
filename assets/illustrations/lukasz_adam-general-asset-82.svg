@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.87 62.86">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 1.06px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-1, .cls-2, .cls-4, .cls-5, .cls-6 {
+        stroke: #4c4047;
+      }
+
+      .cls-2 {
+        stroke-width: .75px;
+      }
+
+      .cls-3 {
+        stroke: #fff;
+        stroke-width: 1.25px;
+      }
+
+      .cls-7 {
+        fill: #efa603;
+      }
+
+      .cls-8 {
+        fill: #ffd55f;
+      }
+
+      .cls-9 {
+        fill: #ffc83e;
+      }
+
+      .cls-10 {
+        fill: #c6dee5;
+      }
+
+      .cls-11 {
+        fill: #4c4047;
+      }
+
+      .cls-4 {
+        stroke-width: .59px;
+      }
+
+      .cls-5 {
+        stroke-width: .79px;
+      }
+
+      .cls-6 {
+        stroke-width: .89px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <path class="cls-10" d="M25.03,18.93h8.4c1,0,1.9,.8,1.9,1.9V60.53c0,1-.8,1.9-1.9,1.9h-8.4c-1,0-1.9-.8-1.9-1.9V20.83c.1-1,.9-1.9,1.9-1.9Z"/>
+      <path class="cls-10" d="M23.03,46.13v16.2H8.43c7.7-5.6,12.1-9.4,14.6-16.2Z"/>
+      <rect class="cls-10" x="9.33" y="2.83" width="20.5" height="2.5"/>
+      <path class="cls-8" d="M1.93,32.03v-1.7H23.43v16.1H3.03c-.6,0-1.1-.2-1.1-.4v-12.6"/>
+      <path class="cls-9" d="M23.63,32.03v-1.7h11.5v16.1h-10.8c-.4,0-.7-.2-.7-.4v-12.6"/>
+      <path class="cls-10" d="M1.93,18.03v-.3H23.43v2.4H3.03c-.6,0-1.1,0-1.1-.1v-1.9"/>
+      <path class="cls-10" d="M15.83,18.03v-.3h19.5v2.4H17.03c-.6,0-1.1,0-1.1-.1v-1.9"/>
+      <path class="cls-10" d="M9.13,6.03v-.3H28.63v2.4H10.23c-.6,0-2.4,0-2.4-.1l1.2-1.9"/>
+      <path class="cls-7" d="M1.93,44.03v-.3H23.43v2.5H3.03c-.6,0-1.1,0-1.1-.1v-2"/>
+      <path class="cls-1" d="M20.03,17.53h15.2V61.13c0,.6-.5,1.1-1.1,1.1h-14.1"/>
+      <path class="cls-1" d="M1.93,22.83v-5.3H23.43V62.33H3.03c-.6,0-1.1-.5-1.1-1.1V27.13"/>
+      <polyline class="cls-1" points="23.43 17.23 29.83 5.73 35.13 17.23"/>
+      <polyline class="cls-1" points="28.23 9.33 7.73 9.33 .53 20.83"/>
+      <polyline class="cls-1" points="9.03 5.83 9.03 .53 29.53 .53 29.53 5.63"/>
+      <line class="cls-1" x1="2.33" y1="58.53" x2="19.63" y2="58.53"/>
+      <line class="cls-1" x1="27.33" y1="58.53" x2="35.13" y2="58.53"/>
+      <g>
+        <line class="cls-6" x1="2.13" y1="30.23" x2="8.93" y2="30.23"/>
+        <line class="cls-6" x1="11.93" y1="30.23" x2="23.43" y2="30.23"/>
+        <line class="cls-2" x1="2.13" y1="46.33" x2="22.73" y2="46.33"/>
+      </g>
+      <g>
+        <line class="cls-6" x1="23.53" y1="30.23" x2="30.33" y2="30.23"/>
+        <line class="cls-6" x1="32.23" y1="30.23" x2="35.23" y2="30.23"/>
+        <line class="cls-6" x1="23.53" y1="46.33" x2="35.43" y2="46.33"/>
+      </g>
+      <line class="cls-3" x1="3.83" y1="32.93" x2="13.43" y2="32.93"/>
+      <line class="cls-4" x1="9.33" y1="4.03" x2="14.53" y2="4.03"/>
+      <line class="cls-4" x1="23.83" y1="2.23" x2="29.03" y2="2.23"/>
+      <line class="cls-5" x1="24.73" y1="15.53" x2="29.93" y2="15.53"/>
+      <circle class="cls-11" cx="15.23" cy="12.03" r="2.4"/>
+    </g>
+  </g>
+</svg>

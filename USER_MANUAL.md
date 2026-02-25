@@ -1,7 +1,7 @@
 # VectorStream 矢量流 - 软件用户使用手册
 
 **软件名称**: VectorStream 矢量流本地素材管理系统  
-**软件版本**: v1.3.3 (Full Offline)
+**软件版本**: v1.4.0 (Concurrent & Scalable)
 **开发/著作权人**: Kwangwa Hung / 鹿溪联合创新实验室
 
 ---
@@ -29,11 +29,11 @@ VectorStream 是一款基于人工智能（AI）驱动的本地 SVG 矢量素材
     - Node.js (推荐 v14+，用于启动本地静态服务)
 
 ### 2.2 安装步骤
-1.  **获取源码**: 将软件压缩包解压或通过 Git 克隆至本地目录 `undraw-local-manager`。
+1.  **获取源码**: 将软件压缩包解压或通过 Git 克隆至本地目录 `VectorStream`。
 2.  **安装依赖**:
     打开终端（Terminal/CMD），进入项目根目录：
     ```bash
-    cd undraw-local-manager
+    cd VectorStream
     pip install requests  # 安装 AI 模块依赖
     ```
 
@@ -74,20 +74,37 @@ VectorStream 是一款基于人工智能（AI）驱动的本地 SVG 矢量素材
     - **下载 SVG**: 获取包含当前配色的矢量源码文件，适合设计师二次编辑或开发使用。
     - **下载 PNG**: 系统实时渲染当前配色的高清位图，适合直接插入 PPT 或文档中。
 
-### 3.5 AI 标注管理（后台功能）
-若需添加新素材，将 SVG 文件放入 `assets/illustrations` 目录，并运行脚本：
+### 3.5 素材批量导入与整合（进阶功能）
+系统支持将外部 SVG 素材批量导入并重命名，以确保文件名的规范性与唯一性。
+
+1.  **执行导入**: 
+    您可以从任意本地目录导入素材：
+    ```bash
+    # 从自定义路径导入示例
+    python3 process_icons.py --source /你的/素材/文件夹路径
+    
+    # 默认从 assets/ICON 导入
+    python3 process_icons.py
+    ```
+2.  **生成清单**: 脚本会自动将文件重命名（格式：`来源-分类-名称.svg`）并复制至 `assets/illustrations` 目录，同时生成 `incremental_task.json` 任务清单。
+
+### 3.6 AI 标注管理（后台功能）
+若需对新导入的素材执行 AI 语义分析，请运行：
 ```bash
-python3 ai_tagger.py
+# 执行并发标注（推荐）
+python3 ai_tagger.py --workers 10
 ```
-系统将自动调用 AI 接口分析新素材，生成标题、描述及分类标签，并更新索引数据库。
+系统将自动分析素材，生成标题、描述及分类标签，并同步更新索引数据库。
 
 ---
 
 ## 第四章：版权与致谢
 
 - **开源协议**: 本软件遵循 MIT 开源许可协议。
-- **素材来源**: 系统内置素材来源于 **VectorCraftr** 及 **unDraw.co** 开源项目，用户可免费用于商业项目（无需署名）。
+- **素材来源**: 系统内置素材由以下开源项目提供，均支持免费商用（含个人及商业用途）：
+    - **矢量插画**: unDraw, Lukasz Adam, VectorCraftr。
+    - **通用图标**: IconPark (字节跳动), Lucide, Tabler Icons, Feather, Heroicons, Iconoir 等。
 - **技术支持**: 由鹿溪联合创新实验室提供技术维护。
 
 ---
-**文档版本**: 1.0 | **生成日期**: 2026-02-08
+**文档版本**: 1.4 | **更新日期**: 2026-02-25
