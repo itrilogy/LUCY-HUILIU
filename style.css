@@ -381,10 +381,11 @@ main {
 }
 
 .svg-card {
-    background: var(--card-bg);
+    background: transparent;
+    /* 允许背景穿透 */
     border-radius: 16px;
     padding: 1.25rem;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
@@ -405,6 +406,10 @@ main {
     border-color: var(--primary-color);
 }
 
+/* 调色逻辑映射：
+   1. 通过 color 属性支持 currentColor
+   2. 映射特定色值到主题色
+*/
 .svg-container {
     flex: 1;
     width: 100%;
@@ -413,20 +418,35 @@ main {
     align-items: center;
     padding: 0.5rem;
     overflow: hidden;
+    color: var(--primary-color);
+    /* 支持 currentColor */
 }
 
 .svg-container svg {
-    max-width: 100%;
-    max-height: 100%;
+    width: 80%;
+    /* 留适度边距 */
+    height: 80%;
     object-fit: contain;
 }
 
-/* 调色逻辑映射 */
+.svg-container svg path,
+.svg-container svg circle,
+.svg-container svg rect {
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+/* 兼容多种常见硬编码颜色 */
 .svg-container svg [fill="#6c63ff"],
 .svg-container svg [fill="#6C63FF"],
-.svg-container svg [stroke="#6c63ff"] {
-    fill: var(--primary-color) !important;
-    transition: fill 0.3s ease;
+.svg-container svg [stroke="#6c63ff"],
+.svg-container svg [stroke="#6C63FF"],
+.svg-container svg [fill="#000"],
+.svg-container svg [fill="black"],
+.svg-container svg [stroke="#000"],
+.svg-container svg [stroke="black"] {
+    fill: inherit;
+    /* 尝试继承容器颜色 */
+    stroke: inherit;
 }
 
 .svg-title {
@@ -504,14 +524,27 @@ main {
 /* 预览容器本身需要宽度，否则 SVG width="100%" 会导致 flex 布局塌陷 */
 #modalSvgPreview {
     width: 100%;
+    min-height: 320px;
+    /* 强制垂直空间并留出血位 */
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--primary-color);
+    background: transparent;
+    border-radius: 12px;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 #modalSvgPreview svg {
-    max-width: 100%;
-    height: auto;
+    /* 弹窗预览增加自适应比例 */
+    width: 100%;
+    height: 100%;
+    max-width: 320px;
+    max-height: 320px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
 }
 
 .options-area {
@@ -562,6 +595,74 @@ main {
     background: rgba(108, 99, 255, 0.1);
     color: var(--primary-color);
     border: 1px solid rgba(108, 99, 255, 0.2);
+}
+
+/* Transparency Toolbar */
+.transparency-toolbar {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.color-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0.8rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.color-picker-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.color-picker-wrapper label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.hex-display {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    min-width: 60px;
+}
+
+#bgColorPicker,
+#themeColorPicker {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+}
+
+#bgColorPicker::-webkit-color-swatch-wrapper,
+#themeColorPicker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#bgColorPicker::-webkit-color-swatch,
+#themeColorPicker::-webkit-color-swatch {
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .download-btns {

@@ -16,6 +16,9 @@
             <div class="logo" id="versionTrigger">
                 <img src="assets/logo.svg" alt="VectorStream Logo" class="brand-logo">
                 <h1>VectorStream <span>矢量流</span></h1>
+                <div
+                    style="font-size: 0.65rem; background: var(--primary-color); color: white; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.5rem; font-weight: 800;">
+                    v1.5 PRO</div>
             </div>
             <div class="controls">
                 <div class="search-box">
@@ -80,7 +83,39 @@
                     <!-- 标签将由 JS 动态注入 -->
                 </div>
                 <p class="modal-desc">选择您需要的格式下载</p>
+                <div class="transparency-toolbar">
+                    <div class="color-controls">
+                        <!-- 去背控制台 -->
+                        <div class="control-group">
+                            <div class="color-picker-wrapper">
+                                <label title="点击预览图拾取要移除的背景色">背景色</label>
+                                <input type="color" id="bgColorPicker" value="#ffffff">
+                                <span id="bgColorDisplay" class="hex-display">#FFFFFF</span>
+                            </div>
+                            <button id="applyDeepClean" class="btn btn-secondary btn-sm">清除该色</button>
+                        </div>
+
+                        <!-- 变色控制台 -->
+                        <div class="control-group">
+                            <div class="color-picker-wrapper">
+                                <label title="点击预览图拾取要变色的主体色">主配色</label>
+                                <input type="color" id="themeColorPicker" value="#6c63ff">
+                                <span id="themeColorDisplay" class="hex-display">#6C63FF</span>
+                            </div>
+                            <button id="setThemeColor" class="btn btn-secondary btn-sm">设为主色</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="download-btns">
+                    <button id="saveOriginal" class="btn btn-success" title="将当前去背/修正结果直接覆写到本地素材文件">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                            <polyline points="17 21 17 13 7 13 7 21" />
+                            <polyline points="7 3 7 8 15 8" />
+                        </svg>
+                        保存到素材 (Overwrite)
+                    </button>
                     <button id="downloadSvg" class="btn btn-primary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -165,6 +200,7 @@
     <div id="toast" class="hidden"></div>
     <canvas id="conversionCanvas" class="hidden"></canvas>
 
+    <script src="assets/libs/minisearch.min.js"></script>
     <script src="script.js"></script>
 </body>
 
