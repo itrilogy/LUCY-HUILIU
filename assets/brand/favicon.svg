@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="VectorStream 矢量流">
+  <!--
+    VectorStream · 产品 favicon（鹿溪 CI）
+    - 鹿溪绿底 #0D5E42：实验室品牌
+    - 贝塞尔路径 + 锚点：矢量绘制 / 素材节点
+    - 金色落点 #F1C40F：精度与导出落点
+    - 溪流 #00D2FF：矢量流
+    - 源启星：智能检索灵感
+  -->
+  <defs>
+    <linearGradient id="vs-bg" x1="3" y1="2" x2="29" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#127A55"/>
+      <stop offset="100%" stop-color="#0D5E42"/>
+    </linearGradient>
+    <linearGradient id="vs-stream" x1="5" y1="24" x2="27" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.25"/>
+      <stop offset="55%" stop-color="#00D2FF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#7CF0FF" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="1" y="1" width="30" height="30" rx="8" fill="url(#vs-bg)"/>
+  <circle cx="9" cy="8" r="6.5" fill="#ffffff" opacity="0.06"/>
+
+  <!-- secondary stream layer -->
+  <path d="M7.2 22.6 C12 16.4, 16.8 17.2, 21.4 21.2"
+        fill="none" stroke="#F5F7FA" stroke-opacity="0.42" stroke-width="1.15" stroke-linecap="round"/>
+
+  <!-- primary vector path -->
+  <path d="M6.6 19.6 C10.4 11.6, 16.2 11.2, 19.4 16.2 C22.2 20.6, 24.6 22.2, 25.6 17.8"
+        fill="none" stroke="#F5F7FA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- vector nodes -->
+  <circle cx="6.6" cy="19.6" r="1.45" fill="#F5F7FA"/>
+  <circle cx="19.4" cy="16.2" r="1.15" fill="#F5F7FA" fill-opacity="0.85"/>
+  <circle cx="25.6" cy="17.8" r="1.7" fill="#F1C40F"/>
+
+  <!-- stream -->
+  <path d="M5.5 26.2 C9 24.8, 12.5 27.1, 16 25.9 C19.2 24.8, 22.5 25.6, 26.5 24.9"
+        fill="none" stroke="url(#vs-stream)" stroke-width="1.45" stroke-linecap="round"/>
+
+  <!-- 源启星 -->
+  <g transform="translate(24.2 7.2)">
+    <path d="M0-2.1 L0.45-0.45 L2.1 0 L0.45 0.45 L0 2.1 L-0.45 0.45 L-2.1 0 L-0.45-0.45 Z" fill="#00D2FF"/>
+    <circle cx="0" cy="0" r="0.45" fill="#F5F7FA"/>
+  </g>
+</svg>

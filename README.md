@@ -1,8 +1,14 @@
-# VectorStream 矢量流 - 本地素材管理系统 (v1.4.0)
+# VectorStream 矢量流 - 本地素材管理系统 (v1.8.0)
+
+> 出品：**鹿溪联合创新实验室**（LUXI Joint Innovation Lab）
 
 VectorStream 是一个现代化的、基于 AI 驱动的 SVG 矢量插画本地管理与检索系统。它专为解决“素材多、管理难、查找慢”的痛点而设计，通过集成大模型 (LLM) 的语义理解能力，让您可以像使用 Google 图片搜索一样精准查找本地素材。本版本已实现 **全离线运行**。
 
-![Project Banner](assets/logo.svg)
+<p>
+  <img src="assets/brand/favicon.svg" width="48" height="48" alt="VectorStream">
+  &nbsp;
+  <img src="assets/brand/logo.svg" width="320" alt="VectorStream 矢量流">
+</p>
 
 ## ✨ 核心特性
 
@@ -27,8 +33,9 @@ VectorStream 是一个现代化的、基于 AI 驱动的 SVG 矢量插画本地�
 
 - **⚡️ 高性能浏览体验**
   - **Glassmorphism UI**：现代化的毛玻璃风格界面，沉浸式体验。
-  - **双格式下载**：弹窗预览支持 **SVG 源码**与 **PNG 高清位图**下载。
-  - **站点 Favicon**：新增精美站点图标。
+  - **棋盘格预览**：网格与弹窗均可辨认透明区域。
+  - **分层去背 / 改色**：按色清除、整图换色、擦除 / 填充选块、去掉画板框。
+  - **双格式下载**：下载当前预览的 SVG / 透明 PNG，不必先保存。
 
 ## 🛠 技术栈 (Tech Stack)
 
@@ -49,16 +56,16 @@ VectorStream 是一个现代化的、基于 AI 驱动的 SVG 矢量插画本地�
 - **Python 3**: 核心脚本语言。
 - **AI Engine**: 集成 **SiliconFlow API** (Qwen3-VL-32B-Instruct)。
 - **Data Store**: 
-  - `metadata.json`: 包含所有素材的元数据索引。
-  - `taxonomy.json`: 定义分类树和双语关键词映射。
-  - `ai_cache.json`: 实现 AI 标注的断点续传。
+  - `catalog.json`: 首屏精简检索目录。
+  - `metadata.json`: 完整元数据索引。
+  - `taxonomy.json`: 分类树和双语关键词映射。
+  - `ai_cache.json`: AI 标注断点续传。
 
 ## 🚀 快速开始
 
 ### 1. 环境准备
 确保您的电脑已安装：
-- **Python 3.8+**
-- **Node.js** (仅用于启动本地静态服务 `npx serve`)
+- **Python 3.8+**（推荐用自带 `server.py` 启动，支持 gzip 与素材库写回）
 
 ### 2. 安装依赖
 ```bash
@@ -73,12 +80,22 @@ python3 process_icons.py --source /path/to/your/icons
 ```
 
 ### 3. 运行服务
-启动前端界面：
+推荐用自带服务器（gzip 压缩 JSON；管理员登录后可写回素材库）：
 ```bash
-# 使用 npx 启动静态服务 (默认端口 3000 或 3001)
+cp .env.example .env   # 首次：填写 VS_ADMIN_PIN
+python3 server.py --port 3001
+```
+访问：`http://localhost:3001`
+
+仅浏览、不需要写回时，也可用：
+```bash
 npx serve . -l 3001
 ```
-访问浏览器：`http://localhost:3001`
+
+若更新了 `metadata.json`，请重建精简目录：
+```bash
+python3 build_index.py
+```
 
 ### 4. (可选) 运行 AI 标注
 如果您添加了新素材，或想重新生成标签：
@@ -92,21 +109,49 @@ python3 ai_tagger.py
 ```
 VectorStream/
 ├── assets/
-│   ├── illustrations/       # 2,396 个 SVG 源文件
-│   ├── metadata.json        # 核心索引库 (由 AI 生成)
+│   ├── brand/               # 产品标识 + 实验室主 LOGO
+│   ├── illustrations/       # 17,000+ 个 SVG 源文件
+│   ├── catalog.json         # 精简检索目录（首屏加载）
+│   ├── metadata.json        # 完整索引库 (由 AI 生成)
 │   ├── taxonomy.json        # 分类体系定义
 │   └── ai_cache.json        # AI 结果缓存
-├── ai_tagger.py             # 核心处理引擎：AI 标注、增量更新与并发管理
-├── process_icons.py         # 图标预处理：重命名与唯一性校验
-├── index.html               # 主入口
-├── script.js                # 前端交互逻辑
-├── style.css                # 样式表
-└── README.md                # 项目文档
+├── docs/软件说明书.md       # 软著鉴别：产品说明书
+├── USER_MANUAL.md           # 使用说明书
+├── server.py                # 本地服务、管理登录、写回
+├── process_icons.py         # 导入重命名
+├── build_index.py / clean_tags.py
+├── index.html / script.js / style.css
+└── README.md
 ```
+
+## 🏷 品牌
+
+| 用途 | 路径 |
+|------|------|
+| Favicon / 顶栏小标 | [`assets/brand/favicon.svg`](assets/brand/favicon.svg) |
+| 产品横版字锁 | [`assets/brand/logo.svg`](assets/brand/logo.svg) |
+| 实验室主 LOGO（出品方） | [`assets/brand/luxi-lab-main.svg`](assets/brand/luxi-lab-main.svg) |
+
+色板：鹿溪绿 `#0D5E42` · 进化蓝 `#00D2FF` · 标题金 `#F1C40F` · 源启白 `#F5F7FA`。详见 [`assets/brand/README.md`](assets/brand/README.md)。
 
 ## 📜 版本历史
 
-- **v1.4.0 (Current)**:
+- **v1.8.0 (Current)**:
+  - ✏️ **编辑语义**：按色清除 / 整图换色 / 擦除选块 / 填充选块 / 去掉画板框。
+  - 🔐 **管理登录**：顶栏 / 页脚入口；口令仅 `.env` + `server.py` 校验。
+  - 🏷 **标签清洗**：去掉 `en:` 残片与描述句，合并极度近义项。
+  - 📄 **文档**：使用手册与软著《软件说明书》增量对齐。
+- **v1.7.0**:
+  - 📦 **精简目录**：首屏改加载 `catalog.json`（约 5MB / gzip 1.3MB），不再先拉 12.8MB metadata。
+  - 🪟 **虚拟网格**：无分页时只挂载可视行，避免 1.7 万 DOM 卡死。
+  - 🖼 **重资源**：超过 80KB 的 SVG 网格用 `<img>` 预览，弹窗再解析。
+  - 💾 **素材库写回**：`python3 server.py` 提供 `POST /api/save`。
+  - 🌙 **深色模式**、焦点环与网格方向键导航。
+- **v1.6.0**:
+  - 🎨 **产品品牌**：鹿溪 CI 产品标 + favicon，页脚 / 关于加入实验室主 LOGO 出品方。
+  - 🖼 **预览编辑**：棋盘格透明预览、拾色分层去背/改色、撤销还原、剥离画布底。
+  - ⚡ **浏览性能**：网格 IntersectionObserver 惰性加载；搜索覆盖描述与 AI 标签。
+- **v1.4.0**:
   - 🚀 **大规模资产整合**：成功整合了包括 IconPark, Lucide 等在内的 1.5 万个新图标资产，总数突破 1.7 万。
   - 🏎️ **并发标注引擎**：重构 `ai_tagger.py` 以支持多线程并发，标注效率提升 5-10 倍。
   - 📑 **增量任务清单**：引入 `incremental_task.json` 清单机制，支持精准的断点续传。
@@ -125,7 +170,8 @@ VectorStream/
 - **Assets Source**: 本系统内素材来源于以下开源项目，均遵循其原有的免费商用协议：
   - **插画类**: [unDraw.co](https://undraw.co), [Lukasz Adam](https://lukaszadam.com), **VectorCraftr**。
   - **图标类**: [IconPark](https://iconpark.oceanengine.com), [Lucide](https://lucide.dev), [Tabler Icons](https://tabler-icons.io), [Feather](https://feathericons.com), [Heroicons](https://heroicons.com), [Iconoir](https://iconoir.com)。
-- **Author**: Kwangwa Hung / 鹿溪联合创新实验室
+- **Author**: Kwangwa Hung
+- **出品**: 鹿溪联合创新实验室（LUXI Joint Innovation Lab）
 
 ---
-© 2026 Crafted with Excellence.
+© 2026 Kwangwa Hung & 鹿溪联合创新实验室.

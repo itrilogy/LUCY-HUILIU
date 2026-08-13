@@ -4,28 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鹿溪联合创新实验室出品 · VectorStream 矢量流 · AI 驱动的本地 SVG 素材管理与检索系统">
     <title>VectorStream 矢量流 - 本地素材管理系统</title>
-    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/brand/favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <!-- Fonts handled locally in style.css -->
+    <script>
+        try { var t = localStorage.getItem('vs-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    </script>
 </head>
 
 <body>
+    <a class="skip-link" href="#gallery">跳到素材网格</a>
     <header class="glass">
         <div class="header-content">
-            <div class="logo" id="versionTrigger">
-                <img src="assets/logo.svg" alt="VectorStream Logo" class="brand-logo">
-                <h1>VectorStream <span>矢量流</span></h1>
-                <div
-                    style="font-size: 0.65rem; background: var(--primary-color); color: white; padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.5rem; font-weight: 800;">
-                    v1.5 PRO</div>
+            <div class="logo" id="versionTrigger" title="关于 VectorStream">
+                <img src="assets/brand/favicon.svg" alt="VectorStream" class="brand-logo">
+                <div class="logo-text">
+                    <h1>VectorStream <span>矢量流</span></h1>
+                    <p class="logo-sub">林深见鹿 · 源启清溪</p>
+                </div>
+                <div class="version-badge">v1.8</div>
             </div>
             <div class="controls">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="搜索 17,700+ 个矢量素材...">
-                    <button id="clearSearch" class="clear-btn hidden" title="清除搜索内容">✕</button>
+                <form class="search-box" id="searchForm" role="search" autocomplete="off" action="#" method="get">
+                    <input type="text" id="searchInput" name="vs-asset-query" placeholder="搜索 17,700+ 个矢量素材..."
+                        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                        data-lpignore="true" data-1p-ignore="true" data-form-type="other">
+                    <button id="clearSearch" class="clear-btn hidden" title="清除搜索内容" type="button">✕</button>
                     <span id="resultCount">17731</span>
-                </div>
+                </form>
 
                 <div class="pagination-control">
                     <label for="rowsSelect">每页行数</label>
@@ -44,17 +52,22 @@
                 </div>
 
                 <div class="color-picker-container">
-                    <input type="color" id="colorPicker" value="#028000" title="选择配色">
+                    <input type="color" id="colorPicker" value="#0D5E42" title="选择全局主色">
                 </div>
+                <button id="themeToggle" class="icon-btn theme-toggle" type="button" title="切换深色模式" aria-pressed="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" />
+                    </svg>
+                </button>
+                <button id="adminEntry" class="admin-entry" type="button" title="管理员登录">管理登录</button>
             </div>
         </div>
 
         <nav class="category-nav">
             <div class="category-wrapper" id="categoryList">
-                <button class="cat-item active" data-cat="all">全部素材</button>
-                <!-- 分类将由 JS 动态注入 -->
+                <button class="cat-item active" data-cat="all" type="button">全部素材</button>
             </div>
-            <button id="backToTop" class="icon-btn" title="回到顶部">
+            <button id="backToTop" class="icon-btn" title="回到顶部" type="button">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 15l-6-6-6 6" />
                 </svg>
@@ -62,105 +75,123 @@
         </nav>
     </header>
 
-    <main id="gallery">
-        <!-- 素材项将在此注入 -->
-    </main>
+    <main id="gallery"></main>
 
-    <div id="paginationNav" class="pagination-nav">
-        <!-- 分页控件将在此注入 -->
-    </div>
+    <div id="paginationNav" class="pagination-nav"></div>
 
-    <!-- 下载弹窗 -->
-    <div id="downloadModal" class="modal hidden">
+    <footer class="site-footer">
+        <div class="producer">
+            <span class="producer-label">出品</span>
+            <img src="assets/brand/luxi-lab-main.svg" alt="鹿溪联合创新实验室" class="lab-logo">
+            <div class="producer-meta">
+                <strong>鹿溪联合创新实验室</strong>
+                <span>LUXI Joint Innovation Lab</span>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 Kwangwa Hung · VectorStream 矢量流 · MIT License
+            <button type="button" class="admin-entry admin-entry-footer" id="adminEntryFooter">管理登录</button>
+        </p>
+    </footer>
+
+    <!-- 预览 / 编辑弹窗 -->
+    <div id="downloadModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content download-config">
-            <button class="close-btn" id="closeDownload">&times;</button>
+            <button class="close-btn" id="closeDownload" type="button" aria-label="关闭">&times;</button>
             <div class="preview-area">
-                <div id="modalSvgPreview"></div>
+                <div id="modalSvgPreview" class="preview-stage checkerboard" title="点击图形拾取颜色"></div>
+                <p class="preview-hint" id="previewHint">棋盘格显示透明区域 · 点击图形拾取颜色</p>
             </div>
             <div class="options-area">
                 <h2 id="modalTitle">素材名称</h2>
-                <div id="modalTags" class="modal-tags">
-                    <!-- 标签将由 JS 动态注入 -->
-                </div>
-                <p class="modal-desc">选择您需要的格式下载</p>
+                <div id="modalTags" class="modal-tags"></div>
+                <p class="modal-desc">点预览取样到高亮色板 · 下载即当前画面，不必先保存</p>
+                <p id="exportStatus" class="export-status">将下载当前预览</p>
+
                 <div class="transparency-toolbar">
                     <div class="color-controls">
-                        <!-- 去背控制台 -->
-                        <div class="control-group">
+                        <div class="control-group is-sample" data-sample="bg" id="bgSampleRow">
                             <div class="color-picker-wrapper">
-                                <label title="点击预览图拾取要移除的背景色">背景色</label>
-                                <input type="color" id="bgColorPicker" value="#ffffff">
+                                <label for="bgColorPicker">背景色</label>
+                                <input type="color" id="bgColorPicker" value="#ffffff" title="色板或系统取色">
                                 <span id="bgColorDisplay" class="hex-display">#FFFFFF</span>
                             </div>
-                            <button id="applyDeepClean" class="btn btn-secondary btn-sm">清除该色</button>
+                            <div class="row-actions">
+                                <button id="applyDeepClean" class="btn btn-secondary btn-sm" type="button" title="整图：去掉所有接近此色的填色/描边">按色清除</button>
+                                <button id="pickModeErase" class="toggle-btn chip-erase" type="button" aria-pressed="false" title="开关：打开后点击预览，只擦掉点中的那一块">擦除选块</button>
+                            </div>
                         </div>
 
-                        <!-- 变色控制台 -->
-                        <div class="control-group">
+                        <div class="control-group" data-sample="theme" id="themeSampleRow">
                             <div class="color-picker-wrapper">
-                                <label title="点击预览图拾取要变色的主体色">主配色</label>
-                                <input type="color" id="themeColorPicker" value="#6c63ff">
+                                <label for="themeColorPicker">主配色</label>
+                                <input type="color" id="themeColorPicker" value="#6c63ff" title="色板或系统取色">
                                 <span id="themeColorDisplay" class="hex-display">#6C63FF</span>
                             </div>
-                            <button id="setThemeColor" class="btn btn-secondary btn-sm">设为主色</button>
+                            <div class="row-actions">
+                                <button id="setThemeColor" class="btn btn-secondary btn-sm" type="button" title="整图：把所有此色映射为全局主色">整图换色</button>
+                                <button id="pickModeFill" class="toggle-btn chip-fill" type="button" aria-pressed="false" title="开关：打开后点击预览，只用主配色填充点中的那一块">填充选块</button>
+                            </div>
                         </div>
                     </div>
+
+                    <p class="local-hint" id="editHint">点击色板行可接收取色；打开局部开关后，点击只改那一块。</p>
+
+                    <div class="edit-toolbar">
+                        <button id="stripCanvasBg" class="btn btn-ghost btn-sm" type="button" title="只删除铺满画板的矩形框，不按颜色、不动画面里的色块">去掉画板框</button>
+                        <button id="undoEdit" class="btn btn-ghost btn-sm" type="button">撤销</button>
+                        <button id="resetEdit" class="btn btn-ghost btn-sm" type="button">还原</button>
+                    </div>
+                    <div id="editChips" class="edit-chips"></div>
                 </div>
+
                 <div class="download-btns">
-                    <button id="saveOriginal" class="btn btn-success" title="将当前去背/修正结果直接覆写到本地素材文件">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                    <button id="saveToLibrary" class="btn btn-success hidden" type="button" title="把当前预览写回素材库（可选）">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
                             <polyline points="17 21 17 13 7 13 7 21" />
                             <polyline points="7 3 7 8 15 8" />
                         </svg>
-                        保存到素材 (Overwrite)
+                        写回素材库
                     </button>
-                    <button id="downloadSvg" class="btn btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                    <button id="downloadSvg" class="btn btn-primary" type="button" title="下载当前预览的 SVG，含未保存修改">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                             <polyline points="7 10 12 15 17 10" />
                             <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
-                        下载 SVG 矢量图
+                        下载当前 SVG
                     </button>
-                    <button id="downloadPng" class="btn btn-secondary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                    <button id="downloadPng" class="btn btn-secondary" type="button" title="下载当前预览的透明 PNG，含未保存修改">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                             <polyline points="7 10 12 15 17 10" />
                             <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
-                        下载 PNG 位图
+                        下载当前 PNG
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 版本信息弹窗 -->
-    <div id="versionModal" class="modal hidden">
+    <!-- 版本 / 版权弹窗 -->
+    <div id="versionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
         <div class="modal-content version-info">
-            <button class="close-btn" id="closeVersion">&times;</button>
+            <button class="close-btn" id="closeVersion" type="button" aria-label="关闭">&times;</button>
             <div class="version-header">
-                <img src="assets/logo.svg" alt="Logo">
-                <h2>VectorStream 矢量流</h2>
-                <p class="tagline">基于 AI 驱动的本地素材管理系统</p>
+                <img src="assets/brand/logo.svg" alt="VectorStream 矢量流" class="about-product-logo">
+                <h2 id="aboutTitle">VectorStream 矢量流</h2>
+                <p class="tagline">AI 驱动的本地矢量素材工作台</p>
             </div>
 
             <div class="version-details">
                 <div class="detail-item">
                     <span>当前版本</span>
-                    <strong>v1.4.0 (Concurrent & Scalable)</strong>
+                    <strong>v1.8.0</strong>
                 </div>
                 <div class="detail-item">
                     <span>作者 / Author</span>
                     <strong>Kwangwa Hung</strong>
-                </div>
-                <div class="detail-item">
-                    <span>组织 / Org</span>
-                    <strong>鹿溪联合创新实验室</strong>
                 </div>
                 <div class="detail-item">
                     <span>开源协议</span>
@@ -168,31 +199,66 @@
                 </div>
             </div>
 
-            <div class="about-section"
-                style="text-align: left; background: #e6f4ea; padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(2, 128, 0, 0.1);">
-                <p style="font-size: 0.8rem; color: #0b4f10; margin-bottom: 0.5rem; font-weight: 600;">⚖️ 版权与素材声明</p>
-                <div style="font-size: 0.75rem; color: #1a5c20; line-height: 1.6;">
-                    <p style="margin-bottom: 0.4rem;">本系统素材均来源于开放版权项目，支持免费商用：</p>
-                    <ul style="list-style: none; padding-left: 0.2rem;">
-                        <li>• <strong>插画</strong>：unDraw, Lukasz Adam, VectorCraftr</li>
-                        <li>• <strong>图标</strong>：IconPark, Lucide, Tabler Icons, Feather, Heroicons, Iconoir 等</li>
-                    </ul>
-                    <p style="margin-top: 0.4rem; font-size: 0.7rem; opacity: 0.8;">* 遵循各项目原有的开源许可协议
-                        (MIT/Apache/ISC/CC0)。</p>
+            <div class="producer-card">
+                <p class="producer-label">出品</p>
+                <div class="about-logo-row">
+                    <div class="about-logo-cell">
+                        <img src="assets/brand/favicon.svg" alt="VectorStream" class="about-app-mark">
+                        <span>VectorStream</span>
+                    </div>
+                    <span class="about-logo-join" aria-hidden="true">×</span>
+                    <div class="about-logo-cell">
+                        <img src="assets/brand/luxi-lab-main.svg" alt="鹿溪联合创新实验室" class="about-lab-logo">
+                        <span>鹿溪联合创新实验室</span>
+                    </div>
+                </div>
+                <p class="producer-en">LUXI Joint Innovation Lab</p>
+            </div>
+
+            <div class="admin-panel" id="adminPanel">
+                <button type="button" class="admin-toggle" id="adminToggle">管理</button>
+                <div class="admin-body hidden" id="adminBody">
+                    <div id="adminLogin">
+                        <p class="admin-copy" id="adminCopy">口令写在项目根目录 .env 的 VS_ADMIN_PIN，由 server.py 校验。</p>
+                        <div class="admin-login-row">
+                            <input type="password" id="adminPin" placeholder="管理口令" autocomplete="current-password">
+                            <button type="button" class="btn btn-secondary btn-sm" id="adminLoginBtn">进入</button>
+                        </div>
+                    </div>
+                    <div id="adminConsole" class="hidden">
+                        <p class="admin-badge">已登录 · 管理员</p>
+                        <ul class="admin-slots">
+                            <li>素材库写回：弹窗将显示「写回素材库」</li>
+                            <li class="is-reserved">重建检索目录 · 预留</li>
+                            <li class="is-reserved">标签清洗复核 · 预留</li>
+                            <li class="is-reserved">批量导入任务 · 预留</li>
+                        </ul>
+                        <button type="button" class="btn btn-ghost btn-sm" id="adminLogoutBtn">退出管理</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="about-section" style="text-align: left; padding: 0 1rem; margin-bottom: 2rem;">
-                <h4 style="margin-bottom: 0.5rem; color: var(--text-main); font-size: 0.85rem;">✨ 核心特性</h4>
-                <ul style="font-size: 0.8rem; color: var(--text-light); line-height: 1.6; list-style: inside;">
-                    <li>🤖 AI 语义检索 (Qwen3-VL 32B)</li>
-                    <li>🎨 实时色彩定制</li>
-                    <li>⚡️ 动态网格与分页</li>
+            <div class="about-section license-box">
+                <p class="about-heading">版权与素材声明</p>
+                <p>本系统素材均来源于开放版权项目，支持免费商用：</p>
+                <ul>
+                    <li><strong>插画</strong>：unDraw, Lukasz Adam, VectorCraftr</li>
+                    <li><strong>图标</strong>：IconPark, Lucide, Tabler Icons, Feather, Heroicons, Iconoir 等</li>
+                </ul>
+                <p class="about-note">遵循各项目原有的开源许可协议（MIT / Apache / ISC / CC0）。</p>
+            </div>
+
+            <div class="about-section">
+                <p class="about-heading">核心特性</p>
+                <ul>
+                    <li>AI 语义检索（Qwen3-VL 32B）</li>
+                    <li>棋盘格预览与分层去背 / 改色</li>
+                    <li>虚拟网格、深色模式、管理员写回预留</li>
                 </ul>
             </div>
 
             <footer class="version-footer">
-                &copy; 2026 Kwangwa Hung & Luxi Lab. All rights reserved.
+                © 2026 Kwangwa Hung &amp; 鹿溪联合创新实验室. All rights reserved.
             </footer>
         </div>
     </div>

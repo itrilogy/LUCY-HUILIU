@@ -1,5 +1,9 @@
 import argparse
+import json
 import logging
+import os
+import re
+import shutil
 
 # 配置默认值
 DEFAULT_SOURCE_DIR = "assets/ICON"
