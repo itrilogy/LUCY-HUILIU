@@ -1,13 +1,14 @@
-# VectorStream 矢量流 - 本地素材管理系统 (v1.8.0)
+# 绘流 · HuiLiu（VectorStream）- 本地矢量素材管理系统 (v1.8.0)
 
+> **引线定锚，聚迹成流**  
 > 出品：**鹿溪联合创新实验室**（LUXI Joint Innovation Lab）
 
-VectorStream 是一个现代化的、基于 AI 驱动的 SVG 矢量插画本地管理与检索系统。它专为解决“素材多、管理难、查找慢”的痛点而设计，通过集成大模型 (LLM) 的语义理解能力，让您可以像使用 Google 图片搜索一样精准查找本地素材。本版本已实现 **全离线运行**。
+**绘流 · HuiLiu**（工程代号 VectorStream）是一个本地优先的 SVG 矢量资产管理工作站。它以贝塞尔路径为基底，支持 AI 语义检索、调色去背与双格式导出，专为解决「素材多、管理难、查找慢」而设计。本版本已实现 **全离线运行**。
 
 <p>
-  <img src="assets/brand/favicon.svg" width="48" height="48" alt="VectorStream">
+  <img src="assets/brand/favicon.svg" width="48" height="48" alt="绘流 · HuiLiu">
   &nbsp;
-  <img src="assets/brand/logo.svg" width="320" alt="VectorStream 矢量流">
+  <img src="assets/brand/logo.svg" width="320" alt="绘流 · HuiLiu">
 </p>
 
 ## ✨ 核心特性
@@ -159,7 +160,7 @@ VectorStream/
 - **v1.3.1**:
   - 💄 **个性化定制**：新增网格密度滑块、行数选择器、回到顶部按钮。
   - 🖼 **双格式下载**：新增 PNG 导出功能。
-  - 🏷 **品牌本地化**：项目更名为 "VectorStream 矢量流"。
+  - 🏷 **品牌本地化**：产品定名为「绘流 · HuiLiu（VectorStream）」。
 - **v1.2.1**: 修复 SVG 渲染与尺寸异常。
 - **v1.2**: 引入 AI 自动分类补全。
 - **v1.1**: 集成 SiliconFlow API 实现语义搜索。
