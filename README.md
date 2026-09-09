@@ -1,15 +1,32 @@
-# 绘流 · HuiLiu（VectorStream）- 本地矢量素材管理系统 (v1.8.0)
+<div align="center">
+  <img src="assets/brand/favicon.svg" width="64" height="64" alt="绘流 · HuiLiu 产品标" />
+  &nbsp;&nbsp;
+  <img src="assets/brand/luxi-lab-main.svg" width="64" height="64" alt="鹿溪联合创新实验室 LUXI LAB" />
+</div>
 
-> **引线定锚，聚迹成流**  
-> 出品：**鹿溪联合创新实验室**（LUXI Joint Innovation Lab）
+<h1 align="center">绘流 · HuiLiu（VectorStream）</h1>
+
+<p align="center">
+  <strong>引线定锚，聚迹成流</strong><br/>
+  <em>Anchors define precision; vectors flow in harmony.</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Matrix-知行%C2%B7三动-0D5E42" alt="matrix" />
+  <img src="https://img.shields.io/badge/Product-绘流%20HuiLiu-0D5E42" alt="product" />
+  <img src="https://img.shields.io/badge/Lab-鹿溪联合创新实验室-047538" alt="lab" />
+  <img src="https://img.shields.io/badge/Version-v1.8.0-f1c40f" alt="version" />
+  <img src="https://img.shields.io/badge/Stack-HTML%20%7C%20CSS%20%7C%20JS%20%7C%20Python-blue" alt="stack" />
+</p>
+
+<p align="center">
+  <b>鹿溪联合创新实验室</b>（LUXI Joint Innovation Lab）出品<br/>
+  仓库：<a href="https://github.com/itrilogy/LUCY-HUILIU">itrilogy/LUCY-HUILIU</a>
+</p>
+
+---
 
 **绘流 · HuiLiu**（工程代号 VectorStream）是一个本地优先的 SVG 矢量资产管理工作站。它以贝塞尔路径为基底，支持 AI 语义检索、调色去背与双格式导出，专为解决「素材多、管理难、查找慢」而设计。本版本已实现 **全离线运行**。
-
-<p>
-  <img src="assets/brand/favicon.svg" width="48" height="48" alt="绘流 · HuiLiu">
-  &nbsp;
-  <img src="assets/brand/logo.svg" width="320" alt="绘流 · HuiLiu">
-</p>
 
 ## ✨ 核心特性
 
@@ -125,15 +142,22 @@ LUCY-HUILIU/
 └── README.md
 ```
 
-## 🏷 品牌
+## 🎨 品牌标识
 
-| 用途 | 路径 |
-|------|------|
-| Favicon / 顶栏小标 | [`assets/brand/favicon.svg`](assets/brand/favicon.svg) |
-| 产品横版字锁 | [`assets/brand/logo.svg`](assets/brand/logo.svg) |
-| 实验室主 LOGO（出品方） | [`assets/brand/luxi-lab-main.svg`](assets/brand/luxi-lab-main.svg) |
+| 标识 | 预览 | 说明 | 源文件 |
+| :---: | :---: | :--- | :--- |
+| **产品方标** | <img src="assets/brand/favicon.svg" width="32" height="32" alt="绘流" /> | 贝塞尔手柄 + 溪流 + 标题金落点（鹿溪绿底） | `assets/brand/favicon.svg` |
+| **产品字锁** | [`assets/brand/logo.svg`](assets/brand/logo.svg) | 横版产品字锁 | `assets/brand/logo.svg` |
+| **实验室主标** | <img src="assets/brand/luxi-lab-main.svg" width="32" height="32" alt="LUXI LAB" /> | 官方 LUXI LAB | `assets/brand/luxi-lab-main.svg` |
 
-色板：鹿溪绿 `#0D5E42` · 进化蓝 `#00D2FF` · 标题金 `#F1C40F` · 源启白 `#F5F7FA`。详见 [`assets/brand/README.md`](assets/brand/README.md)。
+**色板（LUXI CI）**
+
+| Token | 色值 | 用途 |
+| :--- | :--- | :--- |
+| 鹿溪绿 | `#0D5E42` | 主色 / 图标底板 |
+| 源启白 | `#F5F7FA` | 浅色背景 / 反白 |
+| 进化蓝 | `#00D2FF` | 溪流 / 数据高亮 |
+| 标题金 | `#F1C40F` | 落点 / 显著信号 |
 
 ## 📜 版本历史
 
@@ -175,4 +199,10 @@ LUCY-HUILIU/
 - **出品**: 鹿溪联合创新实验室（LUXI Joint Innovation Lab）
 
 ---
-© 2026 Kwangwa Hung & 鹿溪联合创新实验室.
+
+<div align="center">
+  <img src="assets/brand/luxi-lab-main.svg" width="48" height="48" alt="LUXI LAB" />
+  <p><strong>绘流 · HuiLiu</strong> · 引线定锚，聚迹成流</p>
+  <p>© 鹿溪联合创新实验室 · LUXI Joint Innovation Lab</p>
+  <p><em>林深见鹿，源启清溪 · Deep Insights, Evolutionary Origin.</em></p>
+</div>
