@@ -71,7 +71,7 @@
 ### 2. 安装依赖
 ```bash
 # 进入项目目录
-cd VectorStream
+cd LUCY-HUILIU
 
 # 安装 Python 依赖 (用于 AI 标注脚本)
 pip install requests
@@ -108,7 +108,7 @@ python3 ai_tagger.py
 ## 📂 目录结构
 
 ```
-VectorStream/
+LUCY-HUILIU/
 ├── assets/
 │   ├── brand/               # 产品标识 + 实验室主 LOGO
 │   ├── illustrations/       # 17,000+ 个 SVG 源文件
